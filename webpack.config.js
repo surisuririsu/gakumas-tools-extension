@@ -4,22 +4,20 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
-    background: path.join(__dirname, "src", "background.js"),
-    sidepanel: path.join(__dirname, "src", "sidepanel.js"),
+    reader: path.join(__dirname, "src", "reader"),
+    background: path.join(__dirname, "src", "background"),
+    sidePanel: path.join(__dirname, "src", "sidePanel"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
   },
   plugins: [
     new CopyWebpackPlugin({
-      patterns: [
-        { from: "manifest.json", to: "./manifest.json" },
-        { from: "public/img", to: "./img" },
-      ],
+      patterns: ["manifest.json", "public"],
     }),
     new HtmlWebpackPlugin({
-      filename: "sidepanel.html",
-      chunks: ["sidepanel"],
+      filename: "side_panel.html",
+      chunks: ["sidePanel"],
     }),
   ],
   module: {
